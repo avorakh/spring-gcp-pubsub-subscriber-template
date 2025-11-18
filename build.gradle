@@ -1,0 +1,86 @@
+import org.springframework.boot.gradle.plugin.SpringBootPlugin
+
+plugins {
+    id 'java'
+    alias libs.plugins.spring.boot
+    alias libs.plugins.lombok
+    id 'jacoco'
+}
+
+group = 'dev.avorakh.gcp'
+version = '0.0.1-SNAPSHOT'
+description = 'Spring REST API Template for GCP.'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    implementation platform(SpringBootPlugin.BOM_COORDINATES)
+    implementation platform(libs.spring.cloud.dependencies)
+    implementation platform(libs.spring.cloud.gcp.dependencies)
+
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'com.google.cloud:spring-cloud-gcp-starter'
+
+    developmentOnly libs.spring.boot.devtools
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+test {
+    useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+}
+
+lombok {
+    version = "${libs.versions.lombok.get()}"
+}
+
+test {
+    useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+    finalizedBy jacocoTestReport
+}
+
+
+jacoco {
+    toolVersion = libs.versions.jacoco.get()
+}
+
+
+jacocoTestReport {
+    executionData(test)
+    reports {
+        xml.required = true
+        html.required = true
+    }
+    dependsOn test
+}
+
+
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            limit {
+                minimum = 0.3 // 30% Code Coverage
+            }
+        }
+    }
+    dependsOn jacocoTestReport
+}
+
+check.dependsOn jacocoTestCoverageVerification
+

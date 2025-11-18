@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: Spring REST API Template for GCP.
+server:
+  port: 8090
+  servlet:
+    context-path: /template

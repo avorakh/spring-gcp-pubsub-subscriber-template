@@ -1,0 +1,16 @@
+[versions]
+springBoot = '3.5.7'
+springCloud = '2025.0.0'
+springCloudGcp = '7.4.1'
+freefairLombokVersion = '8.13.1'
+lombok = '1.18.38'
+jacoco = '0.8.13'
+
+[libraries]
+spring-boot-devtools = { module = 'org.springframework.boot:spring-boot-devtools', version.ref = 'springBoot' }
+spring-cloud-dependencies = { module = 'org.springframework.cloud:spring-cloud-dependencies', version.ref = 'springCloud' }
+spring-cloud-gcp-dependencies = { module = 'com.google.cloud:spring-cloud-gcp-dependencies', version.ref = 'springCloudGcp' }
+
+[plugins]
+spring-boot = { id = 'org.springframework.boot', version.ref = 'springBoot' }
+lombok = { id = 'io.freefair.lombok', version.ref = 'freefairLombokVersion' }
