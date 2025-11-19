@@ -3,7 +3,7 @@
 spring-gcp-pubsub-subscriber-template
 
 ```bash
-curl -v 'http://localhost:8090/template/app/info'
+curl -v 'http://localhost:8091/template/app/info'
 ```
 
 ## Google Cloud CLI Configuration with Service Account Key
