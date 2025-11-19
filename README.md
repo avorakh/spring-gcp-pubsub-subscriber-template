@@ -99,3 +99,12 @@ gcloud auth list
 > ADC is used by SDKs (Python, Java ,Node.js, Go, etc.) and Terraform.
 
 ---
+## How to run the application with Google Cloud Pub/Sub simulator
+### Setup
+TBA
+
+### How to run the application
+
+```bash
+./gradlew bootRun --args='--spring.profiles.active=local'
+```
