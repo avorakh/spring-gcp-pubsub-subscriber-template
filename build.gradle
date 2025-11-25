@@ -9,7 +9,7 @@ plugins {
 
 group = 'dev.avorakh.gcp'
 version = '0.0.1-SNAPSHOT'
-description = 'Spring REST API Template for GCP.'
+description = 'Spring PubSub Subscriber Template for GCP.'
 
 java {
     toolchain {
@@ -29,10 +29,13 @@ dependencies {
 
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'com.google.cloud:spring-cloud-gcp-starter'
-
+    implementation 'com.google.cloud:spring-cloud-gcp-starter-pubsub'
+    implementation "org.springframework.integration:spring-integration-core"
     developmentOnly libs.spring.boot.devtools
 
+    testImplementation platform(libs.testcontainers.bom)
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation libs.bundles.testcontainers
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 

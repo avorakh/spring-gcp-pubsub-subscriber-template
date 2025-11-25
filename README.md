@@ -1,9 +1,9 @@
-# spring-gcp-rest-api-template
+# spring-gcp-pubsub-subscriber-template
 
-spring-gcp-rest-api-template
+spring-gcp-pubsub-subscriber-template
 
 ```bash
-curl -v 'http://localhost:8090/template/app/info'
+curl -v 'http://localhost:8091/template/app/info'
 ```
 
 ## Google Cloud CLI Configuration with Service Account Key
@@ -99,3 +99,12 @@ gcloud auth list
 > ADC is used by SDKs (Python, Java ,Node.js, Go, etc.) and Terraform.
 
 ---
+## How to run the application with Google Cloud Pub/Sub simulator
+### Setup
+TBA
+
+### How to run the application
+
+```bash
+./gradlew bootRun --args='--spring.profiles.active=local'
+```

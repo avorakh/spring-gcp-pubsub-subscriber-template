@@ -1,0 +1,20 @@
+spring:
+  cloud:
+    gcp:
+      project-id: sample-project
+      pubsub:
+        emulator-host: localhost:8085
+        enabled: true
+      credentials:
+        enabled: false
+app:
+  pubsub:
+    subscription: sample-subscription
+
+# Logging Configuration for Local Profile
+logging:
+  level:
+    root: INFO
+    com.google.cloud.pubsub: DEBUG
+    org.springframework.cloud.gcp.pubsub: DEBUG
+    org.springframework.integration: DEBUG
