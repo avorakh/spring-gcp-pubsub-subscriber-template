@@ -12,10 +12,7 @@ public class PubSubMessageHandler implements MessageHandler {
     @Override
     public void handleMessage(Message<?> message) throws MessagingException {
         Object payload = message.getPayload();
-
-        var payloadData = payload instanceof byte[]
-                ?new String((byte[]) payload)
-                : payload;
+        var payloadData = new String((byte[]) payload);
         log.info("Message arrived. Payload: [{}], headers: [{}]", payloadData, message.getHeaders());
 
         BasicAcknowledgeablePubsubMessage originalMessage =

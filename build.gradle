@@ -33,7 +33,9 @@ dependencies {
     implementation "org.springframework.integration:spring-integration-core"
     developmentOnly libs.spring.boot.devtools
 
+    testImplementation platform(libs.testcontainers.bom)
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation libs.bundles.testcontainers
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
